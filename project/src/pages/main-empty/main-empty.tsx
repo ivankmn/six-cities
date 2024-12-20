@@ -1,6 +1,11 @@
+import { Helmet } from 'react-helmet-async';
+
 function MainPageEmpty(): JSX.Element {
   return (
     <div className="page page--gray page--main">
+      <Helmet>
+        <title>6 cities</title>
+      </Helmet>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
@@ -12,15 +17,14 @@ function MainPageEmpty(): JSX.Element {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
+                  <a className="header__nav-link header__nav-link--profile" href="/">
+                    <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                     <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
                     <span className="header__favorite-count">3</span>
                   </a>
                 </li>
                 <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">
+                  <a className="header__nav-link" href="/">
                     <span className="header__signout">Sign out</span>
                   </a>
                 </li>
@@ -36,17 +40,17 @@ function MainPageEmpty(): JSX.Element {
           <section className="locations container">
             <ul className="locations__list tabs__list">
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <a className="locations__item-link tabs__item" href="/">
                   <span>Paris</span>
                 </a>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <a className="locations__item-link tabs__item" href="/">
                   <span>Cologne</span>
                 </a>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <a className="locations__item-link tabs__item" href="/">
                   <span>Brussels</span>
                 </a>
               </li>
@@ -56,12 +60,12 @@ function MainPageEmpty(): JSX.Element {
                 </a>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <a className="locations__item-link tabs__item" href="/">
                   <span>Hamburg</span>
                 </a>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active" href="#">
+                <a className="locations__item-link tabs__item tabs__item--active" href="/">
                   <span>Dusseldorf</span>
                 </a>
               </li>
@@ -73,7 +77,9 @@ function MainPageEmpty(): JSX.Element {
             <section className="cities__no-places">
               <div className="cities__status-wrapper tabs__content">
                 <b className="cities__status">No places to stay available</b>
-                <p className="cities__status-description">We could not find any property available at the moment in Dusseldorf</p>
+                <p className="cities__status-description">
+                  We could not find any property available at the moment in Dusseldorf
+                </p>
               </div>
             </section>
             <div className="cities__right-section"></div>

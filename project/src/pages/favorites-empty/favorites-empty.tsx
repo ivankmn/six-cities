@@ -1,6 +1,11 @@
+import { Helmet } from 'react-helmet-async';
+
 function FavoritesPageEmpty(): JSX.Element {
   return (
     <div className="page page--favorites-empty">
+      <Helmet>
+        <title>6 cities: favorites empty</title>
+      </Helmet>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
@@ -12,15 +17,14 @@ function FavoritesPageEmpty(): JSX.Element {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
+                  <a className="header__nav-link header__nav-link--profile" href="/">
+                    <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                     <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
                     <span className="header__favorite-count">0</span>
                   </a>
                 </li>
                 <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">
+                  <a className="header__nav-link" href="/">
                     <span className="header__signout">Sign out</span>
                   </a>
                 </li>
@@ -36,7 +40,9 @@ function FavoritesPageEmpty(): JSX.Element {
             <h1 className="visually-hidden">Favorites (empty)</h1>
             <div className="favorites__status-wrapper">
               <b className="favorites__status">Nothing yet saved.</b>
-              <p className="favorites__status-description">Save properties to narrow down search or plan your future trips.</p>
+              <p className="favorites__status-description">
+                Save properties to narrow down search or plan your future trips.
+              </p>
             </div>
           </section>
         </div>
