@@ -22,14 +22,14 @@ function PropertyPage(): JSX.Element {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
+                  <a className="header__nav-link header__nav-link--profile" href="/">
                     <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                     <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
                     <span className="header__favorite-count">3</span>
                   </a>
                 </li>
                 <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">
+                  <a className="header__nav-link" href="/">
                     <span className="header__signout">Sign out</span>
                   </a>
                 </li>
@@ -44,22 +44,22 @@ function PropertyPage(): JSX.Element {
           <div className="property__gallery-container container">
             <div className="property__gallery">
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/room.jpg" alt="Photo studio" />
+                <img className="property__image" src="img/room.jpg" alt="Studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
+                <img className="property__image" src="img/apartment-01.jpg" alt="Studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-02.jpg" alt="Photo studio" />
+                <img className="property__image" src="img/apartment-02.jpg" alt="Studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-03.jpg" alt="Photo studio" />
+                <img className="property__image" src="img/apartment-03.jpg" alt="Studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/studio-01.jpg" alt="Photo studio" />
+                <img className="property__image" src="img/studio-01.jpg" alt="Studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
+                <img className="property__image" src="img/apartment-01.jpg" alt="Studio" />
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@ function PropertyPage(): JSX.Element {
                 <h1 className="property__name">Beautiful &amp; luxurious studio at great location</h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
-                    <use xlinkHref="#icon-bookmark"></use>
+                    <use xlinkHref="/icon-bookmark"></use>
                   </svg>
                   <span className="visually-hidden">To bookmarks</span>
                 </button>
@@ -169,7 +169,7 @@ function PropertyPage(): JSX.Element {
                     </div>
                   </li>
                 </ul>
-                <form className="reviews__form form" action="#" method="post">
+                <form className="reviews__form form" action="/" method="post">
                   <label className="reviews__label form__label" htmlFor="review">
                     Your review
                   </label>
@@ -183,7 +183,7 @@ function PropertyPage(): JSX.Element {
                     />
                     <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
                       <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
+                        <use xlinkHref="/icon-star"></use>
                       </svg>
                     </label>
 
@@ -196,7 +196,7 @@ function PropertyPage(): JSX.Element {
                     />
                     <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
                       <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
+                        <use xlinkHref="/icon-star"></use>
                       </svg>
                     </label>
 
@@ -209,7 +209,7 @@ function PropertyPage(): JSX.Element {
                     />
                     <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
                       <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
+                        <use xlinkHref="/icon-star"></use>
                       </svg>
                     </label>
 
@@ -222,7 +222,7 @@ function PropertyPage(): JSX.Element {
                     />
                     <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
                       <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
+                        <use xlinkHref="/icon-star"></use>
                       </svg>
                     </label>
 
@@ -235,7 +235,7 @@ function PropertyPage(): JSX.Element {
                     />
                     <label htmlFor="1-star" className="reviews__rating-label form__rating-label" title="terribly">
                       <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
+                        <use xlinkHref="/icon-star"></use>
                       </svg>
                     </label>
                   </div>
@@ -266,8 +266,8 @@ function PropertyPage(): JSX.Element {
             <div className="near-places__list places__list">
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
-                  <a href="#">
-                    <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image" />
+                  <a href="/">
+                    <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place" />
                   </a>
                 </div>
                 <div className="place-card__info">
@@ -281,7 +281,7 @@ function PropertyPage(): JSX.Element {
                       type="button"
                     >
                       <svg className="place-card__bookmark-icon" width="18" height="19">
-                        <use xlinkHref="#icon-bookmark"></use>
+                        <use xlinkHref="/icon-bookmark"></use>
                       </svg>
                       <span className="visually-hidden">In bookmarks</span>
                     </button>
@@ -293,7 +293,7 @@ function PropertyPage(): JSX.Element {
                     </div>
                   </div>
                   <h2 className="place-card__name">
-                    <a href="#">Wood and stone place</a>
+                    <a href="/">Wood and stone place</a>
                   </h2>
                   <p className="place-card__type">Private room</p>
                 </div>
@@ -301,13 +301,13 @@ function PropertyPage(): JSX.Element {
 
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
-                  <a href="#">
+                  <a href="/">
                     <img
                       className="place-card__image"
                       src="img/apartment-02.jpg"
                       width="260"
                       height="200"
-                      alt="Place image"
+                      alt="Place"
                     />
                   </a>
                 </div>
@@ -319,7 +319,7 @@ function PropertyPage(): JSX.Element {
                     </div>
                     <button className="place-card__bookmark-button button" type="button">
                       <svg className="place-card__bookmark-icon" width="18" height="19">
-                        <use xlinkHref="#icon-bookmark"></use>
+                        <use xlinkHref="/icon-bookmark"></use>
                       </svg>
                       <span className="visually-hidden">To bookmarks</span>
                     </button>
@@ -331,7 +331,7 @@ function PropertyPage(): JSX.Element {
                     </div>
                   </div>
                   <h2 className="place-card__name">
-                    <a href="#">Canal View Prinsengracht</a>
+                    <a href="/">Canal View Prinsengracht</a>
                   </h2>
                   <p className="place-card__type">Apartment</p>
                 </div>
@@ -342,13 +342,13 @@ function PropertyPage(): JSX.Element {
                   <span>Premium</span>
                 </div>
                 <div className="near-places__image-wrapper place-card__image-wrapper">
-                  <a href="#">
+                  <a href="/">
                     <img
                       className="place-card__image"
                       src="img/apartment-03.jpg"
                       width="260"
                       height="200"
-                      alt="Place image"
+                      alt="Place"
                     />
                   </a>
                 </div>
@@ -360,7 +360,7 @@ function PropertyPage(): JSX.Element {
                     </div>
                     <button className="place-card__bookmark-button button" type="button">
                       <svg className="place-card__bookmark-icon" width="18" height="19">
-                        <use xlinkHref="#icon-bookmark"></use>
+                        <use xlinkHref="/icon-bookmark"></use>
                       </svg>
                       <span className="visually-hidden">To bookmarks</span>
                     </button>
@@ -372,7 +372,7 @@ function PropertyPage(): JSX.Element {
                     </div>
                   </div>
                   <h2 className="place-card__name">
-                    <a href="#">Nice, cozy, warm big bed apartment</a>
+                    <a href="/">Nice, cozy, warm big bed apartment</a>
                   </h2>
                   <p className="place-card__type">Apartment</p>
                 </div>

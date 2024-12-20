@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute } from '../../consts/app-route';
+import { AuthorizationStatus } from '../../consts/authorization-status';
 import Layout from '../layout/layout';
 import Main from '../../pages/main';
 import Favorites from '../../pages/favorites';
