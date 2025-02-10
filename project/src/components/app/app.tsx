@@ -9,19 +9,21 @@ import Login from '../../pages/login';
 import Property from '../../pages/property';
 import NotFound from '../../pages/not-found';
 import PrivateRoute from '../private-route/private-route';
+import { Offers } from '../../types/offer';
+import { Reviews } from '../../types/reviews';
 
 type AppProps = {
-  cardsCount: number;
-  placeCount: string;
+  offers: Offers[];
+  reviews: Reviews[];
 };
 
-function App({ cardsCount, placeCount }: AppProps): JSX.Element {
+function App({ offers, reviews }: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route path={AppRoute.Root} element={<Layout />}>
-            <Route index element={<Main cardsCount={cardsCount} placeCount={placeCount} />} />
+            <Route index element={<Main placeCount={offers.length.toString()} offers={offers} />} />
           </Route>
           <Route
             path={AppRoute.Favorites}
