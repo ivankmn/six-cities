@@ -34,7 +34,7 @@ function App({ offers, reviews }: AppProps): JSX.Element {
             }
           />
           <Route path={AppRoute.Login} element={<Login />} />
-          <Route path={AppRoute.Room} element={<Property />} />
+          <Route path={AppRoute.Room} element={<Property offers={offers} reviews={reviews} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
