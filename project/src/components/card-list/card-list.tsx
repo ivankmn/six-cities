@@ -1,24 +1,26 @@
 import Card from '../card/card';
-import { Offers } from '../../types/offer';
-// import { useState } from 'react';
+import { Offer } from '../../types/offer';
+import { useCallback, useState } from 'react';
 
 type CardProps = {
-  offers: Offers[];
+  offers: Offer[];
 };
 
 function CardList({ offers }: CardProps): JSX.Element {
-  // const [isActiveCard, setIsActiveCard] = useState({ cardId: 0 });
+  const [cardId, setCardId] = useState(0);
+  const onFocus = useCallback(
+    (id: number) => {
+      setCardId(id);
+      // eslint-disable-next-line no-console
+      console.log(cardId);
+    },
+    [setCardId]
+  );
 
   return (
     <div className="cities__places-list places__list tabs__content">
       {offers.map((item) => (
-        <Card
-          // onMouseEnter={() => {
-          //   setIsActiveCard({ ...isActiveCard, cardId: item.id });
-          // }}
-          offer={item}
-          key={item.id}
-        />
+        <Card onFocus={onFocus} offer={item} key={item.id} />
       ))}
     </div>
   );

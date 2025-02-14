@@ -9,12 +9,12 @@ import Login from '../../pages/login';
 import Property from '../../pages/property';
 import NotFound from '../../pages/not-found';
 import PrivateRoute from '../private-route/private-route';
-import { Offers } from '../../types/offer';
-import { Reviews } from '../../types/reviews';
+import { Offer } from '../../types/offer';
+import { Review } from '../../types/review';
 
 type AppProps = {
-  offers: Offers[];
-  reviews: Reviews[];
+  offers: Offer[];
+  reviews: Review[];
 };
 
 function App({ offers, reviews }: AppProps): JSX.Element {
@@ -23,7 +23,7 @@ function App({ offers, reviews }: AppProps): JSX.Element {
       <BrowserRouter>
         <Routes>
           <Route path={AppRoute.Root} element={<Layout />}>
-            <Route index element={<Main placeCount={offers.length.toString()} offers={offers} />} />
+            <Route index element={<Main placeCount={offers.length} offers={offers} />} />
           </Route>
           <Route
             path={AppRoute.Favorites}

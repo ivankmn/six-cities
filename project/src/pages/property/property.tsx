@@ -1,12 +1,12 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
-import { Offers } from '../../types/offer';
-import { Reviews } from '../../types/reviews';
+import { Offer } from '../../types/offer';
+import { Review } from '../../types/review';
 import ReviewForm from '../../components/review-form/review-form';
 
 type PropertyProps = {
-  offers: Offers[];
-  reviews: Reviews[];
+  offers: Offer[];
+  reviews: Review[];
 };
 
 function PropertyPage({ offers, reviews }: PropertyProps): JSX.Element {

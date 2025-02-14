@@ -1,10 +1,10 @@
 import { Helmet } from 'react-helmet-async';
-import { Offers } from '../../types/offer';
+import { Offer } from '../../types/offer';
 import CardList from '../../components/card-list/card-list';
 
 type MainProps = {
-  placeCount: string;
-  offers: Offers[];
+  placeCount: number;
+  offers: Offer[];
 };
 
 function Main({ placeCount, offers }: MainProps): JSX.Element {

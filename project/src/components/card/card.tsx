@@ -1,11 +1,12 @@
-import { Offers } from '../../types/offer';
+import { Offer } from '../../types/offer';
 import { Link } from 'react-router-dom';
 
 type CardProps = {
-  offer: Offers;
+  offer: Offer;
+  onFocus: (id: number) => void;
 };
 
-const oneStarRatingWidth = 20;
+const ONE_STAR_RATING_WIDTH = 20;
 
 function Mark(): JSX.Element {
   return (
@@ -15,9 +16,11 @@ function Mark(): JSX.Element {
   );
 }
 
-function Card({ offer }: CardProps): JSX.Element {
+function Card({ offer, onFocus }: CardProps): JSX.Element {
+  const onCardFocus = () => onFocus(offer.id);
+
   return (
-    <article className="cities__card place-card">
+    <article className="cities__card place-card" onMouseEnter={onCardFocus}>
       {offer.isPremium ? Mark() : ''}
 
       <div className="cities__image-wrapper place-card__image-wrapper">
@@ -40,7 +43,7 @@ function Card({ offer }: CardProps): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${oneStarRatingWidth * offer.rating}%` }}></span>
+            <span style={{ width: `${ONE_STAR_RATING_WIDTH * offer.rating}%` }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

@@ -11,7 +11,7 @@ export type User = {
   avatarUrl: string;
 };
 
-export type Offers = {
+export type Offer = {
   city: {
     name: string;
     location: Location;
