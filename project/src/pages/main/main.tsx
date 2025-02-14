@@ -1,12 +1,13 @@
 import { Helmet } from 'react-helmet-async';
-import Card from '../../components/card/card';
+import { Offer } from '../../types/offer';
+import CardList from '../../components/card-list/card-list';
 
-type CardProps = {
-  cardsCount: number;
-  placeCount: string;
+type MainProps = {
+  placeCount: number;
+  offers: Offer[];
 };
 
-function Main({ cardsCount, placeCount }: CardProps): JSX.Element {
+function Main({ placeCount, offers }: MainProps): JSX.Element {
   return (
     <>
       <Helmet>
@@ -77,11 +78,7 @@ function Main({ cardsCount, placeCount }: CardProps): JSX.Element {
                 </li>
               </ul>
             </form>
-            <div className="cities__places-list places__list tabs__content">
-              {Array.from({ length: cardsCount }).map((item) => (
-                <Card key={1} />
-              ))}
-            </div>
+            <CardList offers={offers} />
           </section>
           <div className="cities__right-section">
             <section className="cities__map map"></section>
