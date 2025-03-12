@@ -4,6 +4,11 @@ export type Location = {
   zoom: number;
 };
 
+export type City = {
+  name: string;
+  location: Location;
+};
+
 export type User = {
   id: number;
   name: string;
@@ -12,10 +17,7 @@ export type User = {
 };
 
 export type Offer = {
-  city: {
-    name: string;
-    location: Location;
-  };
+  city: City;
   previewImage: string;
   images: string[];
   title: string;
