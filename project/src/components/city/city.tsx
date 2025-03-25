@@ -1,17 +1,17 @@
-// import { Link } from 'react-router-dom';
-
 type CityProps = {
   city: string;
-  current: string | undefined;
+  current: string;
+  onSelectCity: (city: string) => (evt: React.MouseEvent<HTMLElement>) => void;
 };
 
-function City({ city, current }: CityProps): JSX.Element {
+function City({ city, current, onSelectCity }: CityProps): JSX.Element {
+  const onChange = onSelectCity(city);
   return (
     <li className="locations__item">
       <a
         className={`locations__item-link tabs__item ${current === city ? 'tabs__item--active' : ''}`}
         href="/"
-        data-id={city}
+        onClick={onChange}
       >
         <span>{city}</span>
       </a>

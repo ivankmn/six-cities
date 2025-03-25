@@ -5,27 +5,19 @@ type CityListProps = {
   cities: string[];
 };
 
-type cityChangeEvent = React.MouseEvent<HTMLElement>;
-
 function CityList({ cities }: CityListProps) {
-  const [currentCity, setCurrentCity] = useState<string | undefined>(cities[0]);
-  const cityChangeHandle = (evt: cityChangeEvent) => {
-    const cityBtn = (evt.target as Element)?.closest('.tabs__item') as HTMLElement;
-
-    if (!cityBtn) {
-      return;
-    }
-
+  const [currentCity, setCurrentCity] = useState<string>(cities[0]);
+  const onSelectCity = (city: string) => (evt: React.MouseEvent<HTMLElement>) => {
     evt.preventDefault();
-    // eslint-disable-next-line no-console
-    console.log(cityBtn.dataset.id);
-    setCurrentCity(cityBtn.dataset.id);
-  };
 
+    // eslint-disable-next-line no-console
+    console.log(city);
+    setCurrentCity(city);
+  };
   return (
-    <ul className="locations__list tabs__list" onClick={cityChangeHandle}>
+    <ul className="locations__list tabs__list">
       {cities.map((city) => (
-        <City city={city} current={currentCity} key={city} />
+        <City city={city} current={currentCity} key={city} onSelectCity={onSelectCity} />
       ))}
     </ul>
   );

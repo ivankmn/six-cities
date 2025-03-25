@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Offer } from '../../types/offer';
 import CardList from '../../components/card-list/card-list';
-import Map from '../../components/map/map';
+import PlacesMap from '../../components/places-map/places-map';
 import CityList from '../../components/city-list/city-list';
 import { CITIES } from '../../consts/cities';
 import { useState } from 'react';
@@ -14,7 +14,7 @@ type MainProps = {
 function Main({ placeCount, offers }: MainProps): JSX.Element {
   const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(undefined);
   const onListItemHover = (cardId: number) => {
-    const currentPoint: Offer | undefined = offers.find((offer: { id: number }) => offer.id === cardId);
+    const currentPoint = offers.find((offer) => offer.id === cardId);
 
     setSelectedPoint(currentPoint);
   };
@@ -61,7 +61,7 @@ function Main({ placeCount, offers }: MainProps): JSX.Element {
             <CardList offers={offers} onListItemHover={onListItemHover} />
           </section>
           <div className="cities__right-section">
-            <Map city={offers[3].city} offers={offers} selectedPoint={selectedPoint} />
+            <PlacesMap city={offers[3].city} offers={offers} selectedPoint={selectedPoint} />
           </div>
         </div>
       </div>
