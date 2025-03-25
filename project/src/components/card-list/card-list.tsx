@@ -4,17 +4,19 @@ import { useCallback, useState } from 'react';
 
 type CardProps = {
   offers: Offer[];
+  onListItemHover: (id: number) => void;
 };
 
-function CardList({ offers }: CardProps): JSX.Element {
+function CardList({ offers, onListItemHover }: CardProps): JSX.Element {
   const [cardId, setCardId] = useState(0);
   const onFocus = useCallback(
     (id: number) => {
       setCardId(id);
       // eslint-disable-next-line no-console
-      console.log(cardId);
+      // console.log(cardId);
+      onListItemHover(cardId);
     },
-    [setCardId]
+    [cardId, onListItemHover]
   );
 
   return (

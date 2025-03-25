@@ -1,6 +1,10 @@
 import { Helmet } from 'react-helmet-async';
 import { Offer } from '../../types/offer';
 import CardList from '../../components/card-list/card-list';
+import PlacesMap from '../../components/places-map/places-map';
+import CityList from '../../components/city-list/city-list';
+import { CITIES } from '../../consts/cities';
+import { useState } from 'react';
 
 type MainProps = {
   placeCount: number;
@@ -8,6 +12,13 @@ type MainProps = {
 };
 
 function Main({ placeCount, offers }: MainProps): JSX.Element {
+  const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(undefined);
+  const onListItemHover = (cardId: number) => {
+    const currentPoint = offers.find((offer) => offer.id === cardId);
+
+    setSelectedPoint(currentPoint);
+  };
+
   return (
     <>
       <Helmet>
@@ -16,38 +27,7 @@ function Main({ placeCount, offers }: MainProps): JSX.Element {
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="/">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="/">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="/">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="/">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="/">
-                <span>Dusseldorf</span>
-              </a>
-            </li>
-          </ul>
+          <CityList cities={CITIES} />
         </section>
       </div>
       <div className="cities">
@@ -78,10 +58,10 @@ function Main({ placeCount, offers }: MainProps): JSX.Element {
                 </li>
               </ul>
             </form>
-            <CardList offers={offers} />
+            <CardList offers={offers} onListItemHover={onListItemHover} />
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <PlacesMap city={offers[3].city} offers={offers} selectedPoint={selectedPoint} />
           </div>
         </div>
       </div>
