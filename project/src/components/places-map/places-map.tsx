@@ -3,8 +3,7 @@ import useMap from '../../hooks/use-map';
 import { City, Offer } from '../../types/offer';
 import { Icon, Marker } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-// import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT, MARKER_SIZE, MARKER_ANCHOR } from '../../consts/map-markers';
-import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../consts/map-markers';
+import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT, ICON_SIZE, ICON_ANCHOR } from '../../consts/map-markers';
 
 type MapProps = {
   city: City;
@@ -14,18 +13,14 @@ type MapProps = {
 
 const defaultCustomIcon = new Icon({
   iconUrl: URL_MARKER_DEFAULT,
-  // iconSize: MARKER_SIZE,
-  // iconAnchor: MARKER_ANCHOR,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
+  iconSize: ICON_SIZE,
+  iconAnchor: ICON_ANCHOR,
 });
 
 const currentCustomIcon = new Icon({
   iconUrl: URL_MARKER_CURRENT,
-  // iconSize: MARKER_SIZE,
-  // iconAnchor: MARKER_ANCHOR,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
+  iconSize: ICON_SIZE,
+  iconAnchor: ICON_ANCHOR,
 });
 
 function getPoints(city: string, offers: Offer[]) {
