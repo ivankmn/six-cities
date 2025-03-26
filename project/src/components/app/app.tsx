@@ -10,11 +10,11 @@ import Property from '../../pages/property';
 import NotFound from '../../pages/not-found';
 import PrivateRoute from '../private-route/private-route';
 import { Offer } from '../../types/offer';
-import { Review } from '../../types/review';
+import { ReviewType } from '../../types/review';
 
 type AppProps = {
   offers: Offer[];
-  reviews: Review[];
+  reviews: ReviewType[];
 };
 
 function App({ offers, reviews }: AppProps): JSX.Element {
