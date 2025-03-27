@@ -38,7 +38,7 @@ function getOffers(): Offer[] {
       price: 212,
       goods: ['Breakfast', 'Air conditioning', 'Baby seat', 'Washer', 'Fridge', 'Towels', 'Laptop friendly workspace'],
       host: {
-        id: 25,
+        id: 21,
         name: 'Angelina',
         isPro: true,
         avatarUrl: 'img/avatar-angelina.jpg',
@@ -88,7 +88,7 @@ function getOffers(): Offer[] {
       price: 105,
       goods: ['Air conditioning', 'Breakfast', 'Laptop friendly workspace', 'Washer'],
       host: {
-        id: 25,
+        id: 22,
         name: 'Angelina',
         isPro: true,
         avatarUrl: 'img/avatar-angelina.jpg',
@@ -138,7 +138,7 @@ function getOffers(): Offer[] {
       price: 132,
       goods: ['Laptop friendly workspace', 'Breakfast', 'Washer', 'Air conditioning'],
       host: {
-        id: 25,
+        id: 23,
         name: 'Angelina',
         isPro: true,
         avatarUrl: 'img/avatar-angelina.jpg',
@@ -200,7 +200,7 @@ function getOffers(): Offer[] {
         'Fridge',
       ],
       host: {
-        id: 25,
+        id: 24,
         name: 'Angelina',
         isPro: true,
         avatarUrl: 'img/avatar-angelina.jpg',
@@ -324,7 +324,7 @@ function getOffers(): Offer[] {
         'Fridge',
       ],
       host: {
-        id: 25,
+        id: 26,
         name: 'Angelina',
         isPro: true,
         avatarUrl: 'img/avatar-angelina.jpg',
@@ -386,7 +386,7 @@ function getOffers(): Offer[] {
         'Fridge',
       ],
       host: {
-        id: 25,
+        id: 27,
         name: 'Angelina',
         isPro: true,
         avatarUrl: 'img/avatar-angelina.jpg',

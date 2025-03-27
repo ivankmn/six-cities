@@ -1,13 +1,14 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
 import { Offer } from '../../types/offer';
-import { ReviewType } from '../../types/review';
+import { ReviewItem } from '../../types/review';
 import ReviewForm from '../../components/review-form/review-form';
 import ReviewsList from '../../components/reviews-list/reviews-list';
+import PropertyMap from '../../components/property-map/property-map';
 
 type PropertyProps = {
   offers: Offer[];
-  reviews: ReviewType[];
+  reviews: ReviewItem[];
 };
 
 function PropertyPage({ offers, reviews }: PropertyProps): JSX.Element {
@@ -149,7 +150,7 @@ function PropertyPage({ offers, reviews }: PropertyProps): JSX.Element {
               </section>
             </div>
           </div>
-          <section className="property__map map"></section>
+          <PropertyMap city={offers[3].city} offers={offers} selectedPoint={undefined}></PropertyMap>
         </section>
         <div className="container">
           <section className="near-places places">

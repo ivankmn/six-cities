@@ -1,6 +1,6 @@
-import { ReviewType } from '../types/review';
+import { ReviewItem } from '../types/review';
 
-function getReviews(): ReviewType[] {
+function getReviews(): ReviewItem[] {
   return [
     {
       id: 1,

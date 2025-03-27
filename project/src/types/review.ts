@@ -1,6 +1,6 @@
 import { User } from './offer';
 
-export type ReviewType = {
+export type ReviewItem = {
   id: number;
   user: User;
   rating: number;
