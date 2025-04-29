@@ -7,7 +7,7 @@ import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT, ICON_SIZE, ICON_ANCHOR } from '
 
 type MapProps = {
   city: City;
-  offers: Offer[];
+  offersNearby: Offer[];
   selectedPoint?: Offer;
 };
 
@@ -28,15 +28,14 @@ function getPoints(city: string, offers: Offer[]) {
 }
 
 function PropertyMap(props: MapProps): JSX.Element {
-  const { city, offers, selectedPoint } = props;
+  const { city, offersNearby: offers, selectedPoint } = props;
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
   const points = getPoints(city.name, offers);
 
   useEffect(() => {
     if (map) {
-      for (let i = 0; i < 3; i++) {
-        const point = points[i];
+      points.slice(0, 3).forEach((point) => {
         const marker = new Marker({
           lat: point.location.latitude,
           lng: point.location.longitude,
@@ -45,7 +44,7 @@ function PropertyMap(props: MapProps): JSX.Element {
         marker
           .setIcon(selectedPoint !== undefined && point.id === selectedPoint.id ? currentCustomIcon : defaultCustomIcon)
           .addTo(map);
-      }
+      });
     }
   }, [map, points, selectedPoint]);
 

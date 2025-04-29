@@ -9,9 +9,10 @@ import PropertyMap from '../../components/property-map/property-map';
 type PropertyProps = {
   offers: Offer[];
   reviews: ReviewItem[];
+  offersNearby: Offer[];
 };
 
-function PropertyPage({ offers, reviews }: PropertyProps): JSX.Element {
+function PropertyPage({ offers, reviews, offersNearby }: PropertyProps): JSX.Element {
   const params = useParams();
   // eslint-disable-next-line no-console
   console.log(params.id);
@@ -150,7 +151,7 @@ function PropertyPage({ offers, reviews }: PropertyProps): JSX.Element {
               </section>
             </div>
           </div>
-          <PropertyMap city={offers[3].city} offers={offers} selectedPoint={undefined}></PropertyMap>
+          <PropertyMap city={offers[3].city} offersNearby={offersNearby} selectedPoint={undefined}></PropertyMap>
         </section>
         <div className="container">
           <section className="near-places places">

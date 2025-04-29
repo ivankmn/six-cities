@@ -15,9 +15,10 @@ import { ReviewItem } from '../../types/review';
 type AppProps = {
   offers: Offer[];
   reviews: ReviewItem[];
+  offersNearby: Offer[];
 };
 
-function App({ offers, reviews }: AppProps): JSX.Element {
+function App({ offers, reviews, offersNearby }: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -34,7 +35,10 @@ function App({ offers, reviews }: AppProps): JSX.Element {
             }
           />
           <Route path={AppRoute.Login} element={<Login />} />
-          <Route path={AppRoute.Room} element={<Property offers={offers} reviews={reviews} />} />
+          <Route
+            path={AppRoute.Room}
+            element={<Property offers={offers} reviews={reviews} offersNearby={offersNearby} />}
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
