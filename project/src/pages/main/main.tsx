@@ -58,7 +58,7 @@ function Main({ placeCount, offers }: MainProps): JSX.Element {
                 </li>
               </ul>
             </form>
-            <CardList offers={offers} onListItemHover={onListItemHover} />
+            <CardList offers={offers} isMain onListItemHover={onListItemHover} />
           </section>
           <div className="cities__right-section">
             <PlacesMap city={offers[3].city} offers={offers} selectedPoint={selectedPoint} />
