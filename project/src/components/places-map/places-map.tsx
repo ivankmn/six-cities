@@ -8,6 +8,7 @@ import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT, ICON_SIZE, ICON_ANCHOR } from '
 type MapProps = {
   city: City;
   offers: Offer[];
+  isMain: boolean;
   selectedPoint?: Offer;
 };
 
@@ -23,19 +24,22 @@ const currentCustomIcon = new Icon({
   iconAnchor: ICON_ANCHOR,
 });
 
-function getPoints(city: string, offers: Offer[]) {
+function getOffers(city: string, offers: Offer[]) {
   return offers.filter((item) => city === item.city.name);
 }
 
 function PlacesMap(props: MapProps): JSX.Element {
-  const { city, offers, selectedPoint } = props;
+  const { city, offers, isMain = true, selectedPoint } = props;
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
-  const points = getPoints(city.name, offers);
+  let mapOffers = offers;
+  if (isMain === true) {
+    mapOffers = getOffers(city.name, offers);
+  }
 
   useEffect(() => {
     if (map) {
-      points.forEach((point) => {
+      mapOffers.forEach((point) => {
         const marker = new Marker({
           lat: point.location.latitude,
           lng: point.location.longitude,
@@ -46,9 +50,9 @@ function PlacesMap(props: MapProps): JSX.Element {
           .addTo(map);
       });
     }
-  }, [map, points, selectedPoint]);
+  }, [map, mapOffers, selectedPoint]);
 
-  return <section className="cities__map map" ref={mapRef}></section>;
+  return <section className={isMain ? 'cities__map map' : 'property__map map'} ref={mapRef}></section>;
 }
 
 export default PlacesMap;

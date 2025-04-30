@@ -24,7 +24,7 @@ function CardList({ offers, isMain = true, onListItemHover }: CardProps): JSX.El
     <div className={`${isMain ? 'cities__places-list places__list tabs__content' : 'near-places__list places__list'}`}>
       {isMain
         ? offers.map((item) => <Card onFocus={onFocus} offer={item} isMain={isMain} key={item.id} />)
-        : offers.slice(0, 3).map((item) => <Card onFocus={onFocus} offer={item} isMain={isMain} key={item.id} />)}
+        : offers.map((item) => <Card onFocus={onFocus} offer={item} isMain={isMain} key={item.id} />)}
     </div>
   );
 }

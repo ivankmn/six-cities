@@ -4,9 +4,9 @@ import { Offer } from '../../types/offer';
 import { ReviewItem } from '../../types/review';
 import ReviewForm from '../../components/review-form/review-form';
 import ReviewsList from '../../components/reviews-list/reviews-list';
-import PropertyMap from '../../components/property-map/property-map';
 import CardList from '../../components/card-list/card-list';
 import { useState } from 'react';
+import PlacesMap from '../../components/places-map/places-map';
 
 type PropertyProps = {
   offers: Offer[];
@@ -16,14 +16,22 @@ type PropertyProps = {
 
 function PropertyPage({ offers, reviews, offersNearby }: PropertyProps): JSX.Element {
   const params = useParams();
+
+  let currentOffer = offers.find((item) => item.id === Number(params.id));
+  if (currentOffer === undefined) {
+    currentOffer = offers[0];
+  }
+
   // eslint-disable-next-line no-console
-  console.log(params.id);
+  console.log(currentOffer);
+
   const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(undefined);
   const onListItemHover = (cardId: number) => {
     const currentPoint = offers.find((offer) => offer.id === cardId);
 
     setSelectedPoint(currentPoint);
   };
+  const nearbyOffers = offersNearby.slice(0, 3);
 
   return (
     <div className="page">
@@ -159,12 +167,12 @@ function PropertyPage({ offers, reviews, offersNearby }: PropertyProps): JSX.Ele
               </section>
             </div>
           </div>
-          <PropertyMap city={offers[3].city} offersNearby={offersNearby} selectedPoint={selectedPoint}></PropertyMap>
+          <PlacesMap city={currentOffer.city} offers={nearbyOffers} isMain={false} selectedPoint={selectedPoint} />
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <CardList offers={offers} isMain={false} onListItemHover={onListItemHover} />
+            <CardList offers={nearbyOffers} isMain={false} onListItemHover={onListItemHover} />
           </section>
         </div>
       </main>
