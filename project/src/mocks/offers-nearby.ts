@@ -1,6 +1,6 @@
 import { Offer } from '../types/offer';
 
-function getOffers(): Offer[] {
+function getOffersNearby(): Offer[] {
   return [
     {
       city: {
@@ -403,4 +403,4 @@ function getOffers(): Offer[] {
   ];
 }
 
-export default getOffers;
+export default getOffersNearby;

@@ -17,7 +17,7 @@ function CityList({ cities }: CityListProps) {
   return (
     <ul className="locations__list tabs__list">
       {cities.map((city) => (
-        <City city={city} current={currentCity} key={city} onCityChange={() => onSelectCity(city)} />
+        <City city={city} current={currentCity} key={city} onCityChange={onSelectCity} />
       ))}
     </ul>
   );
