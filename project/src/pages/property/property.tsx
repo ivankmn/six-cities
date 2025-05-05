@@ -17,10 +17,7 @@ type PropertyProps = {
 function PropertyPage({ offers, reviews, offersNearby }: PropertyProps): JSX.Element {
   const params = useParams();
 
-  let currentOffer = offers.find((item) => item.id === Number(params.id));
-  if (currentOffer === undefined) {
-    currentOffer = offers[0];
-  }
+  const currentOffer = offers.find((item) => item.id === Number(params.id));
 
   // eslint-disable-next-line no-console
   console.log(currentOffer);
@@ -167,7 +164,11 @@ function PropertyPage({ offers, reviews, offersNearby }: PropertyProps): JSX.Ele
               </section>
             </div>
           </div>
-          <PlacesMap city={currentOffer.city} offers={nearbyOffers} isMain={false} selectedPoint={selectedPoint} />
+          {currentOffer ? (
+            <PlacesMap city={currentOffer.city} offers={nearbyOffers} isMain={false} selectedPoint={selectedPoint} />
+          ) : (
+            ''
+          )}
         </section>
         <div className="container">
           <section className="near-places places">
