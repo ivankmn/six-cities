@@ -24,7 +24,7 @@ function App({ offers, reviews, offersNearby }: AppProps): JSX.Element {
       <BrowserRouter>
         <Routes>
           <Route path={AppRoute.Root} element={<Layout />}>
-            <Route index element={<Main placeCount={offers.length} offers={offers} />} />
+            <Route index element={<Main offers={offers} />} />
           </Route>
           <Route
             path={AppRoute.Favorites}

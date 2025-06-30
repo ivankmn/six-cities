@@ -5,16 +5,18 @@ import PlacesMap from '../../components/places-map/places-map';
 import CityList from '../../components/city-list/city-list';
 import { CITIES } from '../../consts/cities';
 import { useState } from 'react';
+import { useAppSelector } from '../../hooks';
 
 type MainProps = {
-  placeCount: number;
   offers: Offer[];
 };
 
-function Main({ placeCount, offers }: MainProps): JSX.Element {
+function Main({ offers }: MainProps): JSX.Element {
+  const city = useAppSelector((state) => state.currentCity);
+  const cityOffers = offers.filter((offer) => offer.city.name === city);
   const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(undefined);
   const onListItemHover = (cardId: number) => {
-    const currentPoint = offers.find((offer) => offer.id === cardId);
+    const currentPoint = cityOffers.find((offer) => offer.id === cardId);
 
     setSelectedPoint(currentPoint);
   };
@@ -34,7 +36,9 @@ function Main({ placeCount, offers }: MainProps): JSX.Element {
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{placeCount} places to stay in Amsterdam</b>
+            <b className="places__found">
+              {cityOffers.length} places to stay in {city}
+            </b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
               <span className="places__sorting-type" tabIndex={0}>
@@ -58,10 +62,10 @@ function Main({ placeCount, offers }: MainProps): JSX.Element {
                 </li>
               </ul>
             </form>
-            <CardList offers={offers} isMain onListItemHover={onListItemHover} />
+            <CardList offers={cityOffers} isMain onListItemHover={onListItemHover} />
           </section>
           <div className="cities__right-section">
-            <PlacesMap city={offers[3].city} offers={offers} isMain selectedPoint={selectedPoint} />
+            <PlacesMap city={cityOffers[0].city} offers={cityOffers} isMain selectedPoint={selectedPoint} />
           </div>
         </div>
       </div>

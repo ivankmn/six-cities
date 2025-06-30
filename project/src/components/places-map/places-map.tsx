@@ -4,6 +4,7 @@ import { City, Offer } from '../../types/offer';
 import { Icon, Marker } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT, ICON_SIZE, ICON_ANCHOR } from '../../consts/map-markers';
+import { useAppSelector } from '../../hooks';
 
 type MapProps = {
   city: City;
@@ -29,12 +30,13 @@ function getOffers(city: string, offers: Offer[]) {
 }
 
 function PlacesMap(props: MapProps): JSX.Element {
+  const currentCity = useAppSelector((state) => state.currentCity);
   const { city, offers, isMain = true, selectedPoint } = props;
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
   let mapOffers = offers;
   if (isMain === true) {
-    mapOffers = getOffers(city.name, offers);
+    mapOffers = getOffers(currentCity, offers);
   }
 
   useEffect(() => {
@@ -50,7 +52,7 @@ function PlacesMap(props: MapProps): JSX.Element {
           .addTo(map);
       });
     }
-  }, [map, mapOffers, selectedPoint]);
+  }, [map, mapOffers, selectedPoint, currentCity]);
 
   return <section className={isMain ? 'cities__map map' : 'property__map map'} ref={mapRef}></section>;
 }
