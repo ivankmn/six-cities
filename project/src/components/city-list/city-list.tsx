@@ -1,7 +1,7 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import City from '../city/city';
-import { useAppDispatch } from '../../hooks';
 import { cityChange } from '../../store/action';
+import { useAppSelector, useAppDispatch } from '../../hooks';
 
 type CityListProps = {
   cities: string[];
@@ -9,14 +9,15 @@ type CityListProps = {
 
 function CityList({ cities }: CityListProps) {
   const dispatch = useAppDispatch();
-  const [currentCity, setCurrentCity] = useState<string>(cities[0]);
+  const currentCity = useAppSelector((state) => state.currentCity);
+  // const [currentCity, setCurrentCity] = useState<string>(cities[0]);
   const onSelectCity = (city: string) => (evt: React.MouseEvent<HTMLElement>) => {
     evt.preventDefault();
 
     // eslint-disable-next-line no-console
     console.log(city);
-    setCurrentCity(city);
-    dispatch(cityChange({ city: currentCity }));
+    // setCurrentCity(city);
+    dispatch(cityChange({ city: city }));
   };
   return (
     <ul className="locations__list tabs__list">

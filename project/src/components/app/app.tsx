@@ -10,7 +10,6 @@ import Property from '../../pages/property';
 import NotFound from '../../pages/not-found';
 import PrivateRoute from '../private-route/private-route';
 
-// TODO убрать все моки и пропсы, перенести в main, сделать итеративно коммитами.
 function App(): JSX.Element {
   return (
     <HelmetProvider>
