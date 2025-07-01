@@ -1,24 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import getOffers from './mocks/offers';
-import getReviews from './mocks/reviews';
-import { Offer } from './types/offer';
-import { ReviewItem } from './types/review';
-import getOffersNearby from './mocks/offers-nearby';
 import { Provider } from 'react-redux';
 import { store } from './store';
-
-const offersList: Offer[] = getOffers();
-const reviewsList: ReviewItem[] = getReviews();
-const offersNearbyList: Offer[] = getOffersNearby();
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App offers={offersList} reviews={reviewsList} offersNearby={offersNearbyList} />
+      <App />
     </Provider>
   </React.StrictMode>
 );

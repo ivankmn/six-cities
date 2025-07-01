@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
 import { Offer } from '../../types/offer';
@@ -5,30 +6,30 @@ import { ReviewItem } from '../../types/review';
 import ReviewForm from '../../components/review-form/review-form';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import CardList from '../../components/card-list/card-list';
-import { useState } from 'react';
 import PlacesMap from '../../components/places-map/places-map';
+import getOffers from '../../mocks/offers';
+import getReviews from '../../mocks/reviews';
+import getOffersNearby from '../../mocks/offers-nearby';
 
-type PropertyProps = {
-  offers: Offer[];
-  reviews: ReviewItem[];
-  offersNearby: Offer[];
-};
+const offersList: Offer[] = getOffers();
+const reviewsList: ReviewItem[] = getReviews();
+const offersNearbyList: Offer[] = getOffersNearby();
 
-function PropertyPage({ offers, reviews, offersNearby }: PropertyProps): JSX.Element {
+function PropertyPage(): JSX.Element {
   const params = useParams();
 
-  const currentOffer = offers.find((item) => item.id === Number(params.id));
+  const currentOffer = offersList.find((item) => item.id === Number(params.id));
 
   // eslint-disable-next-line no-console
   console.log(currentOffer);
 
   const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(undefined);
   const onListItemHover = (cardId: number) => {
-    const currentPoint = offers.find((offer) => offer.id === cardId);
+    const currentPoint = offersList.find((offer) => offer.id === cardId);
 
     setSelectedPoint(currentPoint);
   };
-  const nearbyOffers = offersNearby.slice(0, 3);
+  const nearbyOffers = offersNearbyList.slice(0, 3);
 
   return (
     <div className="page">
@@ -159,7 +160,7 @@ function PropertyPage({ offers, reviews, offersNearby }: PropertyProps): JSX.Ele
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <ReviewsList reviews={reviews} />
+                <ReviewsList reviews={reviewsList} />
                 <ReviewForm />
               </section>
             </div>

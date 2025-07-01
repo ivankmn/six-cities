@@ -9,22 +9,15 @@ import Login from '../../pages/login';
 import Property from '../../pages/property';
 import NotFound from '../../pages/not-found';
 import PrivateRoute from '../private-route/private-route';
-import { Offer } from '../../types/offer';
-import { ReviewItem } from '../../types/review';
 
-type AppProps = {
-  offers: Offer[];
-  reviews: ReviewItem[];
-  offersNearby: Offer[];
-};
-
-function App({ offers, reviews, offersNearby }: AppProps): JSX.Element {
+// TODO убрать все моки и пропсы, перенести в main, сделать итеративно коммитами.
+function App(): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route path={AppRoute.Root} element={<Layout />}>
-            <Route index element={<Main offers={offers} />} />
+            <Route index element={<Main />} />
           </Route>
           <Route
             path={AppRoute.Favorites}
@@ -35,10 +28,7 @@ function App({ offers, reviews, offersNearby }: AppProps): JSX.Element {
             }
           />
           <Route path={AppRoute.Login} element={<Login />} />
-          <Route
-            path={AppRoute.Room}
-            element={<Property offers={offers} reviews={reviews} offersNearby={offersNearby} />}
-          />
+          <Route path={AppRoute.Room} element={<Property />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

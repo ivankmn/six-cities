@@ -1,19 +1,23 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Offer } from '../../types/offer';
 import CardList from '../../components/card-list/card-list';
 import PlacesMap from '../../components/places-map/places-map';
 import CityList from '../../components/city-list/city-list';
 import { CITIES } from '../../consts/cities';
-import { useState } from 'react';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector, useAppDispatch } from '../../hooks';
+import getOffers from '../../mocks/offers';
+import { fillPlaces } from '../../store/action';
 
-type MainProps = {
-  offers: Offer[];
-};
+const offers: Offer[] = getOffers();
 
-function Main({ offers }: MainProps): JSX.Element {
+function Main(): JSX.Element {
+  const dispatch = useAppDispatch();
+  dispatch(fillPlaces({ places: offers }));
+
   const city = useAppSelector((state) => state.currentCity);
   const cityOffers = offers.filter((offer) => offer.city.name === city);
+
   const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(undefined);
   const onListItemHover = (cardId: number) => {
     const currentPoint = cityOffers.find((offer) => offer.id === cardId);
