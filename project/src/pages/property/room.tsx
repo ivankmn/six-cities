@@ -2,34 +2,32 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
 import { Offer } from '../../types/offer';
-import { ReviewItem } from '../../types/review';
 import ReviewForm from '../../components/review-form/review-form';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import CardList from '../../components/card-list/card-list';
 import PlacesMap from '../../components/places-map/places-map';
-import getOffers from '../../mocks/offers';
-import getReviews from '../../mocks/reviews';
-import getOffersNearby from '../../mocks/offers-nearby';
+import { useAppSelector } from '../../hooks';
 
-const offersList: Offer[] = getOffers();
-const reviewsList: ReviewItem[] = getReviews();
-const offersNearbyList: Offer[] = getOffersNearby();
+function Room(): JSX.Element {
+  const city = useAppSelector((state) => state.currentCity);
+  const offers = useAppSelector((state) => state.placesList);
+  const reviews = useAppSelector((state) => state.reviewsList);
+  const offersNearbyList = useAppSelector((state) => state.offersNearbyList);
 
-function PropertyPage(): JSX.Element {
+  const cityOffers = offers.filter((offer) => offer.city.name === city);
+  const nearbyOffers = offersNearbyList.slice(0, 3);
+
   const params = useParams();
-
-  const currentOffer = offersList.find((item) => item.id === Number(params.id));
+  const currentOffer = cityOffers.find((offer) => offer.id === Number(params.id));
 
   // eslint-disable-next-line no-console
   console.log(currentOffer);
 
   const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(undefined);
   const onListItemHover = (cardId: number) => {
-    const currentPoint = offersList.find((offer) => offer.id === cardId);
-
+    const currentPoint = cityOffers.find((offer) => offer.id === cardId);
     setSelectedPoint(currentPoint);
   };
-  const nearbyOffers = offersNearbyList.slice(0, 3);
 
   return (
     <div className="page">
@@ -160,7 +158,7 @@ function PropertyPage(): JSX.Element {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <ReviewsList reviews={reviewsList} />
+                <ReviewsList reviews={reviews} />
                 <ReviewForm />
               </section>
             </div>
@@ -182,4 +180,4 @@ function PropertyPage(): JSX.Element {
   );
 }
 
-export default PropertyPage;
+export default Room;

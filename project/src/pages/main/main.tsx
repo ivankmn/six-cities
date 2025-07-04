@@ -3,26 +3,18 @@ import { Helmet } from 'react-helmet-async';
 import { Offer } from '../../types/offer';
 import CardList from '../../components/card-list/card-list';
 import PlacesMap from '../../components/places-map/places-map';
-import CityList from '../../components/city-list/city-list';
+import Navigation from '../../components/navigation/navigation';
 import { CITIES } from '../../consts/cities';
-// import { useAppSelector, useAppDispatch } from '../../hooks';
 import { useAppSelector } from '../../hooks';
-import getOffers from '../../mocks/offers';
-// import { fillPlaces } from '../../store/action';
-
-const offers: Offer[] = getOffers();
 
 function Main(): JSX.Element {
-  // const dispatch = useAppDispatch();
-  // dispatch(fillPlaces({ places: offers }));
-
   const city = useAppSelector((state) => state.currentCity);
+  const offers = useAppSelector((state) => state.placesList);
   const cityOffers = offers.filter((offer) => offer.city.name === city);
 
   const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(undefined);
   const onListItemHover = (cardId: number) => {
     const currentPoint = cityOffers.find((offer) => offer.id === cardId);
-
     setSelectedPoint(currentPoint);
   };
 
@@ -34,7 +26,7 @@ function Main(): JSX.Element {
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <CityList cities={CITIES} />
+          <Navigation cities={CITIES} />
         </section>
       </div>
       <div className="cities">

@@ -1,10 +1,10 @@
-type CityProps = {
+type NavigationItemProps = {
   city: string;
   current: string;
   onCityChange: (city: string) => (evt: React.MouseEvent<HTMLElement>) => void;
 };
 
-function City({ city, current, onCityChange }: CityProps): JSX.Element {
+function NavigationItem({ city, current, onCityChange }: NavigationItemProps): JSX.Element {
   const onSelectCity = onCityChange(city);
   return (
     <li className="locations__item">
@@ -19,4 +19,4 @@ function City({ city, current, onCityChange }: CityProps): JSX.Element {
   );
 }
 
-export default City;
+export default NavigationItem;

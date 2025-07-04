@@ -4,9 +4,9 @@ import { AppRoute } from '../../consts/app-route';
 import { AuthorizationStatus } from '../../consts/authorization-status';
 import Layout from '../layout/layout';
 import Main from '../../pages/main';
+import Room from '../../pages/property';
 import Favorites from '../../pages/favorites';
 import Login from '../../pages/login';
-import Property from '../../pages/property';
 import NotFound from '../../pages/not-found';
 import PrivateRoute from '../private-route/private-route';
 
@@ -27,7 +27,7 @@ function App(): JSX.Element {
             }
           />
           <Route path={AppRoute.Login} element={<Login />} />
-          <Route path={AppRoute.Room} element={<Property />} />
+          <Route path={AppRoute.Room} element={<Room />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

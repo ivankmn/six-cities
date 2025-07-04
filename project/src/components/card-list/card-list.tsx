@@ -1,6 +1,6 @@
 import Card from '../card/card';
 import { Offer } from '../../types/offer';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 
 type CardProps = {
   offers: Offer[];
@@ -9,22 +9,18 @@ type CardProps = {
 };
 
 function CardList({ offers, isMain = true, onListItemHover }: CardProps): JSX.Element {
-  const [cardId, setCardId] = useState(0);
   const onFocus = useCallback(
     (id: number) => {
-      setCardId(id);
-      // eslint-disable-next-line no-console
-      // console.log(cardId);
-      onListItemHover(cardId);
+      onListItemHover(id);
     },
-    [cardId, onListItemHover]
+    [onListItemHover]
   );
 
   return (
     <div className={`${isMain ? 'cities__places-list places__list tabs__content' : 'near-places__list places__list'}`}>
-      {isMain
-        ? offers.map((item) => <Card onFocus={onFocus} offer={item} isMain={isMain} key={item.id} />)
-        : offers.map((item) => <Card onFocus={onFocus} offer={item} isMain={isMain} key={item.id} />)}
+      {offers.map((item) => (
+        <Card onFocus={onFocus} offer={item} isMain={isMain} key={item.id} />
+      ))}
     </div>
   );
 }
