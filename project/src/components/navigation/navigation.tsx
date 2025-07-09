@@ -9,11 +9,8 @@ type CityListProps = {
 function Navigation({ cities }: CityListProps) {
   const dispatch = useAppDispatch();
   const currentCity = useAppSelector((state) => state.currentCity);
-  const onSelectCity = (city: string) => (evt: React.MouseEvent<HTMLElement>) => {
-    evt.preventDefault();
 
-    // eslint-disable-next-line no-console
-    console.log(city);
+  const onSelectCity = (city: string) => (evt: React.MouseEvent<HTMLAnchorElement>) => {
     dispatch(cityChange({ city: city }));
   };
   return (

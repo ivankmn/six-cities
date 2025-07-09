@@ -164,7 +164,7 @@ function Room(): JSX.Element {
             </div>
           </div>
           {currentOffer ? (
-            <PlacesMap city={currentOffer.city} offers={nearbyOffers} isMain={false} selectedPoint={selectedPoint} />
+            <PlacesMap city={currentOffer.city} offers={nearbyOffers} isMain={false} selectedOffer={selectedPoint} />
           ) : (
             ''
           )}

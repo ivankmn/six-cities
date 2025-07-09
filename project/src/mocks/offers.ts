@@ -6,8 +6,8 @@ function getOffers(): Offer[] {
       city: {
         name: 'Brussels',
         location: {
-          latitude: 50.842238,
-          longitude: 4.3315311,
+          latitude: 50.846557,
+          longitude: 4.351697,
           zoom: 13,
         },
       },
@@ -46,8 +46,8 @@ function getOffers(): Offer[] {
       description:
         'Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance.',
       location: {
-        latitude: 50.842238,
-        longitude: 4.3315311,
+        latitude: 50.854557,
+        longitude: 4.364697,
         zoom: 16,
       },
       id: 31,
@@ -56,8 +56,8 @@ function getOffers(): Offer[] {
       city: {
         name: 'Dusseldorf',
         location: {
-          latitude: 51.238554,
-          longitude: 6.6495461,
+          latitude: 51.225402,
+          longitude: 6.776314,
           zoom: 13,
         },
       },
@@ -96,8 +96,8 @@ function getOffers(): Offer[] {
       description:
         'Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance.',
       location: {
-        latitude: 51.2065193,
-        longitude: 6.8341891,
+        latitude: 51.210402,
+        longitude: 6.798314,
         zoom: 16,
       },
       id: 41,
@@ -308,7 +308,7 @@ function getOffers(): Offer[] {
         location: {
           latitude: 52.37454,
           longitude: 4.897976,
-          zoom: 12,
+          zoom: 13,
         },
       },
       previewImage: 'https://12.react.htmlacademy.pro/static/hotel/18.jpg',
@@ -358,8 +358,8 @@ function getOffers(): Offer[] {
       description:
         'I rent out a very sunny and bright apartment only 7 minutes walking distance to the metro station. The apartment has a spacious living room with a kitchen, one bedroom and a bathroom with mit bath. A terrace can be used in summer.',
       location: {
-        latitude: 52.3909553943508,
-        longitude: 4.85309666406198,
+        latitude: 52.36554,
+        longitude: 4.911976,
         zoom: 16,
       },
       id: 4,
@@ -370,7 +370,7 @@ function getOffers(): Offer[] {
         location: {
           latitude: 52.37454,
           longitude: 4.897976,
-          zoom: 12,
+          zoom: 13,
         },
       },
       previewImage: 'https://12.react.htmlacademy.pro/static/hotel/18.jpg',
@@ -420,8 +420,8 @@ function getOffers(): Offer[] {
       description:
         'I rent out a very sunny and bright apartment only 7 minutes walking distance to the metro station. The apartment has a spacious living room with a kitchen, one bedroom and a bathroom with mit bath. A terrace can be used in summer.',
       location: {
-        latitude: 52.3609553943508,
-        longitude: 4.85309666406198,
+        latitude: 52.385540000000006,
+        longitude: 4.902976,
         zoom: 16,
       },
       id: 5,
@@ -432,7 +432,7 @@ function getOffers(): Offer[] {
         location: {
           latitude: 52.37454,
           longitude: 4.897976,
-          zoom: 12,
+          zoom: 13,
         },
       },
       previewImage: 'https://12.react.htmlacademy.pro/static/hotel/18.jpg',
@@ -482,8 +482,8 @@ function getOffers(): Offer[] {
       description:
         'I rent out a very sunny and bright apartment only 7 minutes walking distance to the metro station. The apartment has a spacious living room with a kitchen, one bedroom and a bathroom with mit bath. A terrace can be used in summer.',
       location: {
-        latitude: 52.3909553943508,
-        longitude: 4.929309666406198,
+        latitude: 52.397540000000006,
+        longitude: 4.9099759999999995,
         zoom: 16,
       },
       id: 6,
@@ -494,7 +494,7 @@ function getOffers(): Offer[] {
         location: {
           latitude: 52.37454,
           longitude: 4.897976,
-          zoom: 12,
+          zoom: 13,
         },
       },
       previewImage: 'https://12.react.htmlacademy.pro/static/hotel/18.jpg',
@@ -544,8 +544,8 @@ function getOffers(): Offer[] {
       description:
         'I rent out a very sunny and bright apartment only 7 minutes walking distance to the metro station. The apartment has a spacious living room with a kitchen, one bedroom and a bathroom with mit bath. A terrace can be used in summer.',
       location: {
-        latitude: 52.3809553943508,
-        longitude: 4.939309666406198,
+        latitude: 52.37454,
+        longitude: 4.881976,
         zoom: 16,
       },
       id: 7,

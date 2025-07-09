@@ -62,7 +62,7 @@ function Main(): JSX.Element {
             <CardList offers={cityOffers} isMain onListItemHover={onListItemHover} />
           </section>
           <div className="cities__right-section">
-            <PlacesMap city={cityOffers[0].city} offers={cityOffers} isMain selectedPoint={selectedPoint} />
+            <PlacesMap city={cityOffers[0].city} offers={cityOffers} isMain selectedOffer={selectedPoint} />
           </div>
         </div>
       </div>
