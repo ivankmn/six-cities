@@ -3,8 +3,17 @@ import { Map, TileLayer } from 'leaflet';
 import { City } from '../types/offer';
 
 function useMap(mapRef: MutableRefObject<HTMLElement | null>, city: City): Map | null {
-  const [map, setMap] = useState<Map | null>(null);
+  const [cityMap, setCityMap] = useState<Map | null>(null);
   const isRendered = useRef<boolean>(false);
+
+  useEffect(() => {
+    if (cityMap) {
+      cityMap.panTo({
+        lat: city.location.latitude,
+        lng: city.location.longitude,
+      });
+    }
+  }, [city, cityMap]);
 
   useEffect(() => {
     if (mapRef.current !== null && !isRendered.current) {
@@ -23,12 +32,12 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, city: City): Map |
 
       instance.addLayer(layer);
 
-      setMap(instance);
+      setCityMap(instance);
       isRendered.current = true;
     }
-  }, [mapRef, map, city]);
+  }, [mapRef, city]);
 
-  return map;
+  return cityMap;
 }
 
 export default useMap;

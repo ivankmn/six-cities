@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import useMap from '../../hooks/use-map';
 import { City, Offer } from '../../types/offer';
-import { Icon, Marker } from 'leaflet';
+import { Icon, layerGroup, Marker } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT, ICON_SIZE, ICON_ANCHOR } from '../../consts/map-markers';
 
@@ -9,7 +9,7 @@ type MapProps = {
   city: City;
   offers: Offer[];
   isMain: boolean;
-  selectedPoint?: Offer;
+  selectedOffer?: Offer | null;
 };
 
 const defaultCustomIcon = new Icon({
@@ -24,33 +24,31 @@ const currentCustomIcon = new Icon({
   iconAnchor: ICON_ANCHOR,
 });
 
-function getOffers(city: string, offers: Offer[]) {
-  return offers.filter((item) => city === item.city.name);
-}
-
 function PlacesMap(props: MapProps): JSX.Element {
-  const { city, offers, isMain = true, selectedPoint } = props;
+  const { city, offers, isMain = true, selectedOffer } = props;
+
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
-  let mapOffers = offers;
-  if (isMain === true) {
-    mapOffers = getOffers(city.name, offers);
-  }
 
   useEffect(() => {
     if (map) {
-      mapOffers.forEach((point) => {
+      const markerLayer = layerGroup().addTo(map);
+      offers.forEach((offer) => {
         const marker = new Marker({
-          lat: point.location.latitude,
-          lng: point.location.longitude,
+          lat: offer.location.latitude,
+          lng: offer.location.longitude,
         });
 
         marker
-          .setIcon(selectedPoint !== undefined && point.id === selectedPoint.id ? currentCustomIcon : defaultCustomIcon)
-          .addTo(map);
+          .setIcon(selectedOffer && offer.id === selectedOffer.id ? currentCustomIcon : defaultCustomIcon)
+          .addTo(markerLayer);
       });
+
+      return () => {
+        map.removeLayer(markerLayer);
+      };
     }
-  }, [map, mapOffers, selectedPoint]);
+  }, [map, offers, selectedOffer]);
 
   return <section className={isMain ? 'cities__map map' : 'property__map map'} ref={mapRef}></section>;
 }

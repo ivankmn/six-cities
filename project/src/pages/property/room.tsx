@@ -1,34 +1,33 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
 import { Offer } from '../../types/offer';
-import { ReviewItem } from '../../types/review';
 import ReviewForm from '../../components/review-form/review-form';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import CardList from '../../components/card-list/card-list';
-import { useState } from 'react';
 import PlacesMap from '../../components/places-map/places-map';
+import { useAppSelector } from '../../hooks';
 
-type PropertyProps = {
-  offers: Offer[];
-  reviews: ReviewItem[];
-  offersNearby: Offer[];
-};
+function Room(): JSX.Element {
+  const city = useAppSelector((state) => state.currentCity);
+  const offers = useAppSelector((state) => state.placesList);
+  const reviews = useAppSelector((state) => state.reviewsList);
+  const offersNearbyList = useAppSelector((state) => state.offersNearbyList);
 
-function PropertyPage({ offers, reviews, offersNearby }: PropertyProps): JSX.Element {
+  const cityOffers = offers.filter((offer) => offer.city.name === city);
+  const nearbyOffers = offersNearbyList.slice(0, 3);
+
   const params = useParams();
-
-  const currentOffer = offers.find((item) => item.id === Number(params.id));
+  const currentOffer = cityOffers.find((offer) => offer.id === Number(params.id));
 
   // eslint-disable-next-line no-console
   console.log(currentOffer);
 
   const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(undefined);
   const onListItemHover = (cardId: number) => {
-    const currentPoint = offers.find((offer) => offer.id === cardId);
-
+    const currentPoint = cityOffers.find((offer) => offer.id === cardId);
     setSelectedPoint(currentPoint);
   };
-  const nearbyOffers = offersNearby.slice(0, 3);
 
   return (
     <div className="page">
@@ -165,7 +164,7 @@ function PropertyPage({ offers, reviews, offersNearby }: PropertyProps): JSX.Ele
             </div>
           </div>
           {currentOffer ? (
-            <PlacesMap city={currentOffer.city} offers={nearbyOffers} isMain={false} selectedPoint={selectedPoint} />
+            <PlacesMap city={currentOffer.city} offers={nearbyOffers} isMain={false} selectedOffer={selectedPoint} />
           ) : (
             ''
           )}
@@ -181,4 +180,4 @@ function PropertyPage({ offers, reviews, offersNearby }: PropertyProps): JSX.Ele
   );
 }
 
-export default PropertyPage;
+export default Room;

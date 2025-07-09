@@ -4,6 +4,106 @@ function getOffers(): Offer[] {
   return [
     {
       city: {
+        name: 'Brussels',
+        location: {
+          latitude: 50.846557,
+          longitude: 4.351697,
+          zoom: 13,
+        },
+      },
+      previewImage: 'https://12.react.htmlacademy.pro/static/hotel/5.jpg',
+      images: [
+        'https://12.react.htmlacademy.pro/static/hotel/1.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/20.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/9.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/2.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/10.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/14.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/5.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/6.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/3.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/15.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/11.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/4.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/18.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/16.jpg',
+      ],
+      title: 'Amazing and Extremely Central Flat',
+      isFavorite: false,
+      isPremium: false,
+      rating: 4,
+      type: 'room',
+      bedrooms: 1,
+      maxAdults: 1,
+      price: 212,
+      goods: ['Breakfast', 'Air conditioning', 'Baby seat', 'Washer', 'Fridge', 'Towels', 'Laptop friendly workspace'],
+      host: {
+        id: 21,
+        name: 'Angelina',
+        isPro: true,
+        avatarUrl: 'img/avatar-angelina.jpg',
+      },
+      description:
+        'Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance.',
+      location: {
+        latitude: 50.854557,
+        longitude: 4.364697,
+        zoom: 16,
+      },
+      id: 31,
+    },
+    {
+      city: {
+        name: 'Dusseldorf',
+        location: {
+          latitude: 51.225402,
+          longitude: 6.776314,
+          zoom: 13,
+        },
+      },
+      previewImage: 'https://12.react.htmlacademy.pro/static/hotel/5.jpg',
+      images: [
+        'https://12.react.htmlacademy.pro/static/hotel/1.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/20.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/9.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/2.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/10.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/14.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/5.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/6.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/3.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/15.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/11.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/4.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/18.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/16.jpg',
+      ],
+      title: 'Amazing and Extremely Central Flat',
+      isFavorite: false,
+      isPremium: false,
+      rating: 4,
+      type: 'room',
+      bedrooms: 1,
+      maxAdults: 1,
+      price: 212,
+      goods: ['Breakfast', 'Air conditioning', 'Baby seat', 'Washer', 'Fridge', 'Towels', 'Laptop friendly workspace'],
+      host: {
+        id: 21,
+        name: 'Angelina',
+        isPro: true,
+        avatarUrl: 'img/avatar-angelina.jpg',
+      },
+      description:
+        'Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance.',
+      location: {
+        latitude: 51.210402,
+        longitude: 6.798314,
+        zoom: 16,
+      },
+      id: 41,
+    },
+    {
+      city: {
         name: 'Paris',
         location: {
           latitude: 48.85661,
@@ -51,6 +151,56 @@ function getOffers(): Offer[] {
         zoom: 16,
       },
       id: 1,
+    },
+    {
+      city: {
+        name: 'Paris',
+        location: {
+          latitude: 48.85661,
+          longitude: 2.351499,
+          zoom: 13,
+        },
+      },
+      previewImage: 'https://12.react.htmlacademy.pro/static/hotel/5.jpg',
+      images: [
+        'https://12.react.htmlacademy.pro/static/hotel/1.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/20.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/9.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/2.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/10.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/14.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/5.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/6.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/3.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/15.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/11.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/4.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/18.jpg',
+        'https://12.react.htmlacademy.pro/static/hotel/16.jpg',
+      ],
+      title: 'Amazing and Extremely Central Flat',
+      isFavorite: false,
+      isPremium: false,
+      rating: 4,
+      type: 'room',
+      bedrooms: 1,
+      maxAdults: 1,
+      price: 212,
+      goods: ['Breakfast', 'Air conditioning', 'Baby seat', 'Washer', 'Fridge', 'Towels', 'Laptop friendly workspace'],
+      host: {
+        id: 21,
+        name: 'Angelina',
+        isPro: true,
+        avatarUrl: 'img/avatar-angelina.jpg',
+      },
+      description:
+        'Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance.',
+      location: {
+        latitude: 48.843610000000005,
+        longitude: 2.358499,
+        zoom: 16,
+      },
+      id: 21,
     },
     {
       city: {
@@ -158,7 +308,7 @@ function getOffers(): Offer[] {
         location: {
           latitude: 52.37454,
           longitude: 4.897976,
-          zoom: 12,
+          zoom: 13,
         },
       },
       previewImage: 'https://12.react.htmlacademy.pro/static/hotel/18.jpg',
@@ -208,8 +358,8 @@ function getOffers(): Offer[] {
       description:
         'I rent out a very sunny and bright apartment only 7 minutes walking distance to the metro station. The apartment has a spacious living room with a kitchen, one bedroom and a bathroom with mit bath. A terrace can be used in summer.',
       location: {
-        latitude: 52.3909553943508,
-        longitude: 4.85309666406198,
+        latitude: 52.36554,
+        longitude: 4.911976,
         zoom: 16,
       },
       id: 4,
@@ -220,7 +370,7 @@ function getOffers(): Offer[] {
         location: {
           latitude: 52.37454,
           longitude: 4.897976,
-          zoom: 12,
+          zoom: 13,
         },
       },
       previewImage: 'https://12.react.htmlacademy.pro/static/hotel/18.jpg',
@@ -270,8 +420,8 @@ function getOffers(): Offer[] {
       description:
         'I rent out a very sunny and bright apartment only 7 minutes walking distance to the metro station. The apartment has a spacious living room with a kitchen, one bedroom and a bathroom with mit bath. A terrace can be used in summer.',
       location: {
-        latitude: 52.3609553943508,
-        longitude: 4.85309666406198,
+        latitude: 52.385540000000006,
+        longitude: 4.902976,
         zoom: 16,
       },
       id: 5,
@@ -282,7 +432,7 @@ function getOffers(): Offer[] {
         location: {
           latitude: 52.37454,
           longitude: 4.897976,
-          zoom: 12,
+          zoom: 13,
         },
       },
       previewImage: 'https://12.react.htmlacademy.pro/static/hotel/18.jpg',
@@ -332,8 +482,8 @@ function getOffers(): Offer[] {
       description:
         'I rent out a very sunny and bright apartment only 7 minutes walking distance to the metro station. The apartment has a spacious living room with a kitchen, one bedroom and a bathroom with mit bath. A terrace can be used in summer.',
       location: {
-        latitude: 52.3909553943508,
-        longitude: 4.929309666406198,
+        latitude: 52.397540000000006,
+        longitude: 4.9099759999999995,
         zoom: 16,
       },
       id: 6,
@@ -344,7 +494,7 @@ function getOffers(): Offer[] {
         location: {
           latitude: 52.37454,
           longitude: 4.897976,
-          zoom: 12,
+          zoom: 13,
         },
       },
       previewImage: 'https://12.react.htmlacademy.pro/static/hotel/18.jpg',
@@ -394,8 +544,8 @@ function getOffers(): Offer[] {
       description:
         'I rent out a very sunny and bright apartment only 7 minutes walking distance to the metro station. The apartment has a spacious living room with a kitchen, one bedroom and a bathroom with mit bath. A terrace can be used in summer.',
       location: {
-        latitude: 52.3809553943508,
-        longitude: 4.939309666406198,
+        latitude: 52.37454,
+        longitude: 4.881976,
         zoom: 16,
       },
       id: 7,
