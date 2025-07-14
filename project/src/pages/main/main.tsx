@@ -4,6 +4,7 @@ import { Offer } from '../../types/offer';
 import CardList from '../../components/card-list/card-list';
 import PlacesMap from '../../components/places-map/places-map';
 import Navigation from '../../components/navigation/navigation';
+import SortingList from '../../components/sorting/sorting-list';
 import { CITIES } from '../../consts/cities';
 import { useAppSelector } from '../../hooks';
 
@@ -36,29 +37,7 @@ function Main(): JSX.Element {
             <b className="places__found">
               {cityOffers.length} places to stay in {city}
             </b>
-            <form className="places__sorting" action="#" method="get">
-              <span className="places__sorting-caption">Sort by</span>
-              <span className="places__sorting-type" tabIndex={0}>
-                Popular
-                <svg className="places__sorting-arrow" width="7" height="4">
-                  <use xlinkHref="#icon-arrow-select"></use>
-                </svg>
-              </span>
-              <ul className="places__options places__options--custom places__options--opened">
-                <li className="places__option places__option--active" tabIndex={0}>
-                  Popular
-                </li>
-                <li className="places__option" tabIndex={0}>
-                  Price: low to high
-                </li>
-                <li className="places__option" tabIndex={0}>
-                  Price: high to low
-                </li>
-                <li className="places__option" tabIndex={0}>
-                  Top rated first
-                </li>
-              </ul>
-            </form>
+            <SortingList />
             <CardList offers={cityOffers} isMain onListItemHover={onListItemHover} />
           </section>
           <div className="cities__right-section">

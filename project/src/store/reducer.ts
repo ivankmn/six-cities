@@ -1,16 +1,19 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { Offer } from '../types/offer';
 import { ReviewItem } from '../types/review';
-import { cityChange, fillPlaces } from './action';
+import { cityChange, fillPlaces, sorting } from './action';
 import getOffers from '../mocks/offers';
 import getReviews from '../mocks/reviews';
 import getOffersNearby from '../mocks/offers-nearby';
+import { SortItem } from '../consts/sort-item';
+import { CITIES } from '../consts/cities';
 
 interface MyState {
   currentCity: string;
   placesList: Offer[];
   reviewsList: ReviewItem[];
   offersNearbyList: Offer[];
+  currentSorting: string;
 }
 
 const offers: Offer[] = getOffers();
@@ -18,10 +21,11 @@ const reviews: ReviewItem[] = getReviews();
 const offersNearby: Offer[] = getOffersNearby();
 
 const initialState: MyState = {
-  currentCity: 'Paris',
+  currentCity: CITIES[0],
   placesList: offers,
   reviewsList: reviews,
   offersNearbyList: offersNearby,
+  currentSorting: SortItem.POPULAR,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -33,6 +37,10 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(fillPlaces, (state, action) => {
       const { places } = action.payload;
       state.placesList = places;
+    })
+    .addCase(sorting, (state, action) => {
+      const { sortingType } = action.payload;
+      state.currentSorting = sortingType;
     });
 });
 
