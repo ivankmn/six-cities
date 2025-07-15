@@ -1,7 +1,7 @@
 import Card from '../card/card';
 import { Offer } from '../../types/offer';
 import { useCallback } from 'react';
-import { SortItem } from '../../consts/sort-item';
+import { SortItems } from '../../consts/sort-items';
 import { useAppSelector } from '../../hooks';
 
 type CardProps = {
@@ -12,13 +12,13 @@ type CardProps = {
 
 const getSortedOffers = (offers: Offer[], sortingType: string) => {
   switch (sortingType) {
-    case SortItem.POPULAR:
+    case SortItems.POPULAR:
       return offers;
-    case SortItem.PRICE_HIGH_TO_LOW:
+    case SortItems.PRICE_HIGH_TO_LOW:
       return [...offers].sort((a, b) => b.price - a.price);
-    case SortItem.PRICE_LOW_TO_HIGH:
+    case SortItems.PRICE_LOW_TO_HIGH:
       return [...offers].sort((a, b) => a.price - b.price);
-    case SortItem.TOP_RATED:
+    case SortItems.TOP_RATED:
       return [...offers].sort((a, b) => b.rating - a.rating);
     default:
       return offers;

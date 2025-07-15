@@ -6,9 +6,11 @@ import PlacesMap from '../../components/places-map/places-map';
 import Navigation from '../../components/navigation/navigation';
 import SortingList from '../../components/sorting/sorting-list';
 import { CITIES } from '../../consts/cities';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { sorting } from '../../store/action';
 
 function Main(): JSX.Element {
+  const dispatch = useAppDispatch();
   const city = useAppSelector((state) => state.currentCity);
   const offers = useAppSelector((state) => state.placesList);
   const cityOffers = offers.filter((offer) => offer.city.name === city);
@@ -17,6 +19,10 @@ function Main(): JSX.Element {
   const onListItemHover = (cardId: number) => {
     const currentPoint = cityOffers.find((offer) => offer.id === cardId);
     setSelectedPoint(currentPoint);
+  };
+  const onSortingChange = (sortingType: string, setIsSortingOpened: (sortState: boolean) => void) => {
+    dispatch(sorting({ sortingType: sortingType }));
+    setIsSortingOpened(false);
   };
 
   return (
@@ -37,7 +43,7 @@ function Main(): JSX.Element {
             <b className="places__found">
               {cityOffers.length} places to stay in {city}
             </b>
-            <SortingList />
+            <SortingList onChange={onSortingChange} />
             <CardList offers={cityOffers} isMain onListItemHover={onListItemHover} />
           </section>
           <div className="cities__right-section">

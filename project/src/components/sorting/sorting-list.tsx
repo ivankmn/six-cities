@@ -1,20 +1,18 @@
 import { useState } from 'react';
-import { SortItem } from '../../consts/sort-item';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { sorting } from '../../store/action';
+import { SortItems } from '../../consts/sort-items';
+import { useAppSelector } from '../../hooks';
 
-function SortingList(): JSX.Element {
-  const dispatch = useAppDispatch();
+type SortProps = {
+  onChange: (sortingType: string, setIsSortingOpened: (sortState: boolean) => void) => void;
+};
+
+function SortingList(props: SortProps): JSX.Element {
+  const { onChange } = props;
   const currentSortType = useAppSelector((state) => state.currentSorting);
   const [isSortingOpened, setIsSortingOpened] = useState(false);
 
   const sortingToggle = () => {
     setIsSortingOpened((prevState) => !prevState);
-  };
-
-  const onSortingChange = (sortingType: string) => {
-    dispatch(sorting({ sortingType: sortingType }));
-    setIsSortingOpened(false);
   };
 
   return (
@@ -27,12 +25,12 @@ function SortingList(): JSX.Element {
         </svg>
       </span>
       <ul className={`places__options places__options--custom ${isSortingOpened ? 'places__options--opened' : ''}`}>
-        {Object.values(SortItem).map((sortType) => (
+        {Object.values(SortItems).map((sortType) => (
           <li
             key={sortType}
             className={`places__option ${sortType === currentSortType ? 'places__option--active' : ''}`}
             tabIndex={0}
-            onClick={() => onSortingChange(sortType)}
+            onClick={() => onChange(sortType, setIsSortingOpened)}
           >
             {sortType}
           </li>

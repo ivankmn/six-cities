@@ -5,7 +5,7 @@ import { cityChange, fillPlaces, sorting } from './action';
 import getOffers from '../mocks/offers';
 import getReviews from '../mocks/reviews';
 import getOffersNearby from '../mocks/offers-nearby';
-import { SortItem } from '../consts/sort-item';
+import { SortItems } from '../consts/sort-items';
 import { CITIES } from '../consts/cities';
 
 interface MyState {
@@ -25,7 +25,7 @@ const initialState: MyState = {
   placesList: offers,
   reviewsList: reviews,
   offersNearbyList: offersNearby,
-  currentSorting: SortItem.POPULAR,
+  currentSorting: SortItems.POPULAR,
 };
 
 const reducer = createReducer(initialState, (builder) => {
