@@ -8,7 +8,7 @@ type CityListProps = {
 
 function Navigation({ cities }: CityListProps) {
   const dispatch = useAppDispatch();
-  const currentCity = useAppSelector((state) => state.currentCity);
+  const currentCity = useAppSelector((state) => state.appData.currentCity);
 
   const onSelectCity = (city: string) => (evt: React.MouseEvent<HTMLAnchorElement>) => {
     dispatch(cityChange({ city: city }));

@@ -32,7 +32,7 @@ function CardList({ offers, isMain = true, onListItemHover }: CardProps): JSX.El
     },
     [onListItemHover]
   );
-  const currentSortType = useAppSelector((state) => state.currentSorting);
+  const currentSortType = useAppSelector((state) => state.appData.currentSorting);
   const sortedOffers = getSortedOffers(offers, currentSortType);
 
   return (
