@@ -9,6 +9,7 @@ import { CITIES } from '../../consts/cities';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { sorting } from '../../store/action';
 import { useGetLocationsQuery } from '../../api/api';
+import Loader from '../../components/loader/loader';
 
 function Main(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -27,14 +28,9 @@ function Main(): JSX.Element {
   };
 
   if (isLoading) {
-    return (
-      <div className="loading-container">
-        <div className="spinner"></div>
-        <p>Загружаем список отелей...</p>
-      </div>
-    );
+    return <Loader />;
   }
-  if (!offers) {
+  if (offers.length === 0) {
     return <div>Нет данных</div>;
   }
   return (
