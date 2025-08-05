@@ -8,13 +8,15 @@ import SortingList from '../../components/sorting/sorting-list';
 import { CITIES } from '../../consts/cities';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { sorting } from '../../store/action';
+import { useGetLocationsQuery } from '../../api/api';
+import Loader from '../../components/loader/loader';
 
 function Main(): JSX.Element {
   const dispatch = useAppDispatch();
-  const city = useAppSelector((state) => state.currentCity);
-  const offers = useAppSelector((state) => state.placesList);
-  const cityOffers = offers.filter((offer) => offer.city.name === city);
+  const { data: offers = [], isLoading } = useGetLocationsQuery();
+  const city = useAppSelector((state) => state.appData.currentCity);
 
+  const cityOffers = offers.filter((offer) => offer.city.name === city);
   const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(undefined);
   const onListItemHover = (cardId: number) => {
     const currentPoint = cityOffers.find((offer) => offer.id === cardId);
@@ -25,6 +27,12 @@ function Main(): JSX.Element {
     setIsSortingOpened(false);
   };
 
+  if (isLoading) {
+    return <Loader />;
+  }
+  if (offers.length === 0) {
+    return <div>Нет данных</div>;
+  }
   return (
     <>
       <Helmet>

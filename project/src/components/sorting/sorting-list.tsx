@@ -8,7 +8,7 @@ type SortProps = {
 
 function SortingList(props: SortProps): JSX.Element {
   const { onChange } = props;
-  const currentSortType = useAppSelector((state) => state.currentSorting);
+  const currentSortType = useAppSelector((state) => state.appData.currentSorting);
   const [isSortingOpened, setIsSortingOpened] = useState(false);
 
   const sortingToggle = () => {

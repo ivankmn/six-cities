@@ -9,10 +9,10 @@ import PlacesMap from '../../components/places-map/places-map';
 import { useAppSelector } from '../../hooks';
 
 function Room(): JSX.Element {
-  const city = useAppSelector((state) => state.currentCity);
-  const offers = useAppSelector((state) => state.placesList);
-  const reviews = useAppSelector((state) => state.reviewsList);
-  const offersNearbyList = useAppSelector((state) => state.offersNearbyList);
+  const city = useAppSelector((state) => state.appData.currentCity);
+  const offers = useAppSelector((state) => state.appData.placesList);
+  const reviews = useAppSelector((state) => state.appData.reviewsList);
+  const offersNearbyList = useAppSelector((state) => state.appData.offersNearbyList);
 
   const cityOffers = offers.filter((offer) => offer.city.name === city);
   const nearbyOffers = offersNearbyList.slice(0, 3);
