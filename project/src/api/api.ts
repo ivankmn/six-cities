@@ -11,13 +11,16 @@ export const api = createApi({
     getLocations: builder.query<Offer[], void>({
       query: () => 'hotels',
     }),
-    getReviews: builder.query<ReviewItem[], void>({
-      query: () => 'reviews',
+    getLocationItem: builder.query<Offer[], number>({
+      query: (hotelId) => `hotels/${hotelId}`,
     }),
-    getLocationsNearby: builder.query<Offer[], string>({
-      query: (hotelId) => `${hotelId}/nearby`,
+    getReviews: builder.query<ReviewItem[], number>({
+      query: (hotelId) => `/comments/${hotelId}`,
+    }),
+    getLocationsNearby: builder.query<Offer[], number>({
+      query: (hotelId) => `hotels/${hotelId}/nearby/`,
     }),
   }),
 });
 
-export const { useGetLocationsQuery } = api;
+export const { useGetLocationsQuery, useGetReviewsQuery, useGetLocationsNearbyQuery } = api;

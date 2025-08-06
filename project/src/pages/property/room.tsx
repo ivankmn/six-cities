@@ -7,27 +7,35 @@ import ReviewsList from '../../components/reviews-list/reviews-list';
 import CardList from '../../components/card-list/card-list';
 import PlacesMap from '../../components/places-map/places-map';
 import { useAppSelector } from '../../hooks';
+import { useGetLocationsQuery, useGetReviewsQuery, useGetLocationsNearbyQuery } from '../../api/api';
+import Loader from '../../components/loader/loader';
 
 function Room(): JSX.Element {
   const city = useAppSelector((state) => state.appData.currentCity);
-  const offers = useAppSelector((state) => state.appData.placesList);
-  const reviews = useAppSelector((state) => state.appData.reviewsList);
-  const offersNearbyList = useAppSelector((state) => state.appData.offersNearbyList);
+  const params = useParams();
+  const cityId = Number(params.id);
+  const { data: offers = [], isLoading: isLocLoading } = useGetLocationsQuery();
+  const { data: reviews = [] } = useGetReviewsQuery(cityId);
+  const { data: offersNearbyList = [] } = useGetLocationsNearbyQuery(cityId);
 
   const cityOffers = offers.filter((offer) => offer.city.name === city);
   const nearbyOffers = offersNearbyList.slice(0, 3);
-
-  const params = useParams();
-  const currentOffer = cityOffers.find((offer) => offer.id === Number(params.id));
+  const currentOffer = cityOffers.find((offer) => offer.id === cityId);
 
   // eslint-disable-next-line no-console
   console.log(currentOffer);
+  // eslint-disable-next-line no-console
+  console.log(nearbyOffers);
 
   const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(undefined);
   const onListItemHover = (cardId: number) => {
     const currentPoint = cityOffers.find((offer) => offer.id === cardId);
     setSelectedPoint(currentPoint);
   };
+
+  if (isLocLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="page">
