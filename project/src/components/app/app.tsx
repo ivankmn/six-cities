@@ -1,14 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AppRoute } from '../../consts/app-route';
-import { AuthorizationStatus } from '../../consts/authorization-status';
 import Layout from '../layout/layout';
 import Main from '../../pages/main';
 import Room from '../../pages/property';
 import Favorites from '../../pages/favorites';
 import Login from '../../pages/login';
 import NotFound from '../../pages/not-found';
-import PrivateRoute from '../private-route/private-route';
+import RequireAuth from '../require-auth/require-auth';
 
 function App(): JSX.Element {
   return (
@@ -21,9 +20,9 @@ function App(): JSX.Element {
           <Route
             path={AppRoute.Favorites}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <RequireAuth>
                 <Favorites />
-              </PrivateRoute>
+              </RequireAuth>
             }
           />
           <Route path={AppRoute.Login} element={<Login />} />
