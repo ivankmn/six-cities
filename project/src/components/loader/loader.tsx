@@ -1,7 +1,7 @@
 const Loader = () => (
   <div className="loading-container">
     <div className="spinner"></div>
-    <p>Загружаем список отелей...</p>
+    <p>Загружаем...</p>
   </div>
 );
 
